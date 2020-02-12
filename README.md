@@ -1,1 +1,1 @@
-# BibliotecaLibros
+Se adjunta script para la creación de la base de datos con nombre SQLQuery2.sql
