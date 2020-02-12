@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BibliotecaLibros.Models.Libro>
+
+@{
+    ViewBag.Title = "Listado";
+}
+
+<h2>Listado de libros</h2>
+
+<p>
+    @Html.ActionLink("Agregar", "Create")
+</p>
+<table class="responsive-table striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Autor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="tooltipped" data-tooltip="@item.Descripcion" data-position="top">
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            <td>
+                <img src="@item.Imagen" width="200" height="250" />
+            </td>
+            <td class="stock">
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @*@Html.ActionLink("Editar", "Edit", new { id = item.IdLibro }) <br />
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdLibro })<br />*@
+                <a class="btn btn-default lime darken-4" href="javascript:;" onclick="PrestarLibro(@item.IdLibro)">Prestar</a>
+            </td>
+        </tr>
+    }
+
+</table>
